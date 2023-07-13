@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getData,deleteData} from "../redux/data.action";
 import { useNavigate } from "react-router-dom";
+import './style.css';
 
 const Home = () => {
     let data = useSelector((store)=>store.userReducer.data)
@@ -33,9 +34,9 @@ let createUser=(type)=>{
         dispatch(getData())
     },[msg])
     return(
-        <>
-        <button onClick={()=>{createUser("add")}}>Add User</button>
-                <table>
+        <div className="container">
+        <button onClick={()=>{createUser("add")}} className="btn">Add User</button>
+                <table className="table">
                     <thead>
                         <tr>
                            <td>index</td>
@@ -61,7 +62,7 @@ let createUser=(type)=>{
                         })}
                     </tbody>
                 </table>
-        </>
+        </div>
     )
 }
 
